@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lucabarlaam5-dev.github.io/sitemap.xml

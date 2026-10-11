@@ -66,7 +66,7 @@ section{position:relative;scroll-margin-top:64px}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100dvh;max-height:1000px;display:grid;align-items:end;overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;top:-6%;bottom:-6%;right:0;left:40%;z-index:-2;background:url(img/hero.webp) center 22%/cover no-repeat;will-change:transform;animation:heroIn 2.2s var(--ease) both;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
+.hero-bg{position:absolute;top:-6%;bottom:-6%;right:0;left:40%;z-index:-2;background:url(img/luca-barlaam-tastierista-live.webp) center 22%/cover no-repeat;will-change:transform;animation:heroIn 2.2s var(--ease) both;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
 @keyframes heroIn{from{transform:scale(1.12);filter:brightness(.4)}to{transform:scale(1.04);filter:none}}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(700px 500px at 72% 30%,rgba(140,200,255,.10),transparent 70%),linear-gradient(180deg,rgba(10,25,48,0) 70%,var(--bg) 100%)}
 .credit{position:absolute;right:clamp(20px,5vw,48px);top:96px;font-size:11px;letter-spacing:.08em;color:var(--text-3);opacity:.8}
@@ -280,7 +280,7 @@ footer a:hover{color:var(--text)}
   .nav .btn{margin-left:auto}
   section{scroll-margin-top:112px}
   .hero{min-height:100svh;max-height:none}
-  .hero-bg{left:0;top:104px;bottom:auto;height:min(78%,640px);background-image:url(img/hero-sm.webp);background-size:100% auto;background-position:center top;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
+  .hero-bg{left:0;top:104px;bottom:auto;height:min(78%,640px);background-image:url(img/luca-barlaam-tastierista-live-sm.webp);background-size:100% auto;background-position:center top;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
   .credit{top:auto;bottom:12px;right:16px}
   .hero::before{background:linear-gradient(180deg,rgba(10,25,48,.25) 0%,rgba(10,25,48,0) 22%,rgba(10,25,48,0) 45%,rgba(10,25,48,.7) 66%,var(--bg) 82%)}
   .hero-inner{padding-bottom:40px}
@@ -379,3 +379,9 @@ h2.in .wi{transform:none}
 .bio-foot .bands{margin:0;justify-content:flex-end}
 @media (max-width:900px){.bio-body{columns:1}.bio-foot .bands{justify-content:flex-start}}
 @media (max-width:640px){.bio-head{gap:18px;align-items:flex-start;flex-direction:column}.avatar{width:96px;border-radius:24px}.bio-head .bio-quote{font-size:19px}}
+
+/* foto dell'apertura come vera immagine (indicizzabile da Google Immagini) */
+.hero-bg{background:none!important}
+.hero-bg picture,.hero-bg img{display:block;width:100%;height:100%}
+.hero-bg img{object-fit:cover;object-position:center 22%}
+@media (max-width:640px){.hero-bg img{height:auto;object-fit:initial}}
