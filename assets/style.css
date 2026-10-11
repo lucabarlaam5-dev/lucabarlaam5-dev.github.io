@@ -4,7 +4,7 @@
 @font-face{font-family:'Sora';src:url(fonts/sora.woff2) format('woff2');font-weight:100 800;font-display:swap}
 @font-face{font-family:'Manrope';src:url(fonts/manrope.woff2) format('woff2');font-weight:200 800;font-display:swap}
 
-:root{
+:root{color-scheme:dark;
   --bg:#0A1930;--bg-2:#0C1F3A;--surface:#112847;--surface-2:#163257;
   --line:rgba(244,241,234,.10);--line-2:rgba(244,241,234,.18);
   --text:#F4F1EA;--text-2:#CDD3DC;--text-3:#9EA9BA;
@@ -320,3 +320,45 @@ footer a:hover{color:var(--text)}
   .hero h1 .char,.fade-up,.js .reveal{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
   html{scroll-behavior:auto}
 }
+
+/* ===== rifinitura "moderna" ===== */
+/* titoli che salgono parola per parola da una maschera */
+.js h2.reveal.split{opacity:1;transform:none}
+.wl{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.wi{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+h2.in .wi{transform:none}
+
+/* hero: riflesso di luce calda che respira sopra la foto */
+.hero::after{content:"";position:absolute;z-index:-1;width:60vmax;height:60vmax;right:-14vmax;top:-18vmax;border-radius:50%;background:radial-gradient(circle,rgba(212,176,122,.22),transparent 62%);mix-blend-mode:screen;pointer-events:none;animation:leak 14s ease-in-out infinite alternate}
+@keyframes leak{to{transform:translate(-8vmax,10vmax) scale(1.15);opacity:.6}}
+.hero-inner{will-change:transform,opacity}
+
+/* marquee editoriale: parole piene e contornate alternate */
+.marquee{font-size:clamp(28px,4.2vw,56px);font-weight:600;letter-spacing:-.03em;color:var(--text);padding:28px 0}
+.marquee span:nth-child(even){color:transparent;-webkit-text-stroke:1px rgba(244,241,234,.45)}
+.marquee span::after{width:10px;height:10px}
+
+/* bio: il ritratto resta fermo mentre scorri il testo */
+@media (min-width:901px){.bio>div:last-child{position:sticky;top:96px}}
+
+/* bordi che si illuminano sotto il cursore */
+.platform{position:relative}
+.platform::after,.panel::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(212,176,122,.85),transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.platform:hover::after,.panel:hover::after{opacity:1}
+
+/* lezioni: il numero si allunga in una riga oro al passaggio */
+.row-num{display:flex;align-items:center;gap:12px}
+.row-num::after{content:"";height:1px;width:0;background:var(--gold);transition:width .6s var(--ease)}
+.row:hover .row-num::after{width:44px}
+
+/* video: pulsante play personalizzato */
+.vwrap{position:relative}
+.vplay{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:999px;border:0;cursor:pointer;background:var(--gold);color:var(--bg);display:grid;place-items:center;box-shadow:0 0 0 0 rgba(212,176,122,.5);animation:pulse 2.6s ease-out infinite;transition:transform .5s var(--ease),opacity .3s}
+.vplay .ic{width:26px;height:26px;margin-left:4px}
+.vplay:hover{transform:scale(1.08)}
+.vplay.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,176,122,.5)}100%{box-shadow:0 0 0 22px rgba(212,176,122,0)}}
+@media (max-width:640px){.marquee{padding:20px 0}.vplay{width:64px;height:64px;margin:-32px 0 0 -32px}}
+@media (prefers-reduced-motion:reduce){.wi{transform:none!important}}
