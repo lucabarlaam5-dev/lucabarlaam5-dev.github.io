@@ -339,7 +339,7 @@ h2.in .wi{transform:none}
 .marquee span::after{width:10px;height:10px}
 
 /* bio: il ritratto resta fermo mentre scorri il testo */
-@media (min-width:901px){.bio>div:last-child{position:sticky;top:96px}}
+
 
 /* bordi che si illuminano sotto il cursore */
 .platform{position:relative}
@@ -362,3 +362,20 @@ h2.in .wi{transform:none}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,176,122,.5)}100%{box-shadow:0 0 0 22px rgba(212,176,122,0)}}
 @media (max-width:640px){.marquee{padding:20px 0}.vplay{width:64px;height:64px;margin:-32px 0 0 -32px}}
 @media (prefers-reduced-motion:reduce){.wi{transform:none!important}}
+
+/* bio a colonna unica con foto piccola accanto al titolo */
+.bio{display:block}
+.bio-head{display:flex;align-items:center;gap:clamp(20px,3vw,36px);margin-bottom:36px}
+.bio-head h2{margin-bottom:12px}
+.bio-head .bio-quote{margin:0;max-width:36ch}
+.avatar{position:relative;flex-shrink:0;width:clamp(96px,11vw,140px);aspect-ratio:1;border-radius:28px;overflow:hidden;box-shadow:0 20px 40px -20px rgba(2,8,20,.9),0 0 0 1px var(--gold-line),0 0 0 6px var(--bg),0 0 0 7px rgba(212,176,122,.22);rotate:-4deg;transition:rotate .7s var(--ease),scale .7s var(--ease)}
+.avatar:hover{rotate:0deg;scale:1.04}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.bio-body{columns:2;column-gap:56px}
+.bio-body .lead{margin:0 0 18px;max-width:none}
+.bio-body .lead:last-child{margin-bottom:0}
+.bio-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.bio-foot .stats{margin:0;padding:0;border:0}
+.bio-foot .bands{margin:0;justify-content:flex-end}
+@media (max-width:900px){.bio-body{columns:1}.bio-foot .bands{justify-content:flex-start}}
+@media (max-width:640px){.bio-head{gap:18px;align-items:flex-start;flex-direction:column}.avatar{width:96px;border-radius:24px}.bio-head .bio-quote{font-size:19px}}
